@@ -228,15 +228,15 @@ flowchart LR
 
 ---
 
-## Longitudinal Vision (Future)
+## Future Vision
 
-* Orientation shift tracking across sessions
+* Tracking across sessions
 * Repeated metaphor surfacing
 * Scaling anchor tracking
 * Exception density analysis
 * Memory feed for Paloma between sessions
 
-This becomes the structured substrate for agentic coaching support outside live sessions.
+This is the system architecture for agentic coaching support outside live sessions.
 
 ---
 
@@ -263,7 +263,7 @@ It is the first layer of coaching intelligence infrastructure.
 
 ### Backend
 
-* Python (FastAPI) or Node
+* Python (FastAPI) 
 * Structured session object storage
 * Encrypted transcript layer
 
