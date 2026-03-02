@@ -4,12 +4,17 @@ __pycache__/
 .venv/
 venv/
 .env
+backend/.venv/
+__pycache__/
+*.pyc
 
 # Node
 node_modules/
 dist/
 .vite/
 .next/
+frontend/node_modules/
+frontend/dist/
 
 # DB
 *.db
@@ -20,3 +25,6 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+openapi.json
+payload.json
