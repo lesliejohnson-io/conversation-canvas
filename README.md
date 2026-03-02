@@ -7,6 +7,11 @@ It captures dialogue in real time, classifies conversational orientation, detect
 
 The goal: reduce cognitive load while preserving coach presence, judgment, and control.
 
+![AI](https://img.shields.io/badge/AI-Human--in--the--Loop-blue)
+![System](https://img.shields.io/badge/System-Workflow%20Intelligence-blue)
+![Backend](https://img.shields.io/badge/Backend-FastAPI-teal)
+![Frontend](https://img.shields.io/badge/Frontend-Next.js-teal)
+
 ---
 
 ## Core Capabilities (V1)
