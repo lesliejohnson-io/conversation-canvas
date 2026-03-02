@@ -92,9 +92,17 @@ def list_phrases(session_id: str) -> dict:
         ],
     }
 
-class PhraseQuadrantUpdate(BaseModel):
-    quadrant_final: str | None = None
+from typing import Optional, Literal
 
+Quadrant = Literal[
+    "resourceful_past",
+    "preferred_future",
+    "troubled_past",
+    "dreaded_future",
+]
+
+class PhraseQuadrantUpdate(BaseModel):
+    quadrant_final: Optional[Quadrant] = None
 
 @router.patch("/phrases/{phrase_id}")
 def update_phrase_quadrant(phrase_id: int, payload: PhraseQuadrantUpdate) -> dict:

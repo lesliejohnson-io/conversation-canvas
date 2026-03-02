@@ -4,6 +4,7 @@ from sqlmodel import Session as DBSession, select
 from ..db import engine
 from ..models import Sentence, Phrase
 from .phrase_norm import normalize_phrase
+from .invariants import enforce_phrase_invariants
 
 def seed_phrases_from_sentences(session_id: str) -> dict:
     """
@@ -41,6 +42,20 @@ def seed_phrases_from_sentences(session_id: str) -> dict:
                 existing.updated_at = datetime.utcnow()
                 collapsed += 1
             else:
+                obj = Phrase(
+                    session_id=session_id,
+                    phrase_text=phrase_text,
+                    phrase_norm=norm,
+                    source_sentence_index=s.sentence_index,
+                    extraction_confidence=0.99,
+                    classification_confidence=0.0,
+                    quadrant_model=None,
+                    quadrant_final=None,
+                    recurrence_count=1,
+                    updated_at=datetime.utcnow(),
+                )
+                enforce_phrase_invariants(obj)
+                db.add(obj)
                 db.add(
                     Phrase(
                         session_id=session_id,
