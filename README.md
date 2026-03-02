@@ -1,11 +1,13 @@
-# 🕊️ Paloma Session Canvas  
-### Real-Time AI Session Intelligence for Coaching Workflows
+# 🕊️ Paloma Session Canvas
 
-Paloma Session Canvas is a human-in-the-loop AI system that structures live coaching conversations into actionable insights.
+## The Structured Conversational Mapping Layer
 
-It captures dialogue in real time, classifies conversational orientation, detects solution-building signals, and extracts high-integrity client language without interrupting session flow.
+**Before AI can guide human conversation, conversational state must be made legible.**
 
-The goal: reduce cognitive load while preserving coach presence, judgment, and control.
+Real-time conversational state mapping for live coaching sessions.
+
+Unstructured transcript input → spatially mapped, confidence-gated state.  
+No automated coaching decisions.
 
 ![AI](https://img.shields.io/badge/AI-Human--in--the--Loop-blue)
 ![System](https://img.shields.io/badge/System-Workflow%20Intelligence-blue)
@@ -14,43 +16,46 @@ The goal: reduce cognitive load while preserving coach presence, judgment, and c
 
 ---
 
-## Core Capabilities (V1)
+## Architectural Layers (V1)
 
-- **Real-Time Orientation Tagging**  
-  Classifies each utterance and provides lightweight confidence scoring with human override.
+### Extraction
+- Phrase extraction  
+- Confidence ≥ 0.6  
+- Max two phrases per utterance (cross-quadrant only)
 
-- **Solution Signal Detection**  
-  Identifies emerging “miracle” and “exception” patterns as they occur.
+### Classification
+- DOQ quadrant assignment  
+- Confidence ≥ 0.7  
+- Below threshold → list-only
 
-- **Verbatim Phrase Extraction**  
-  Extracts meaningful client language into a structured, traceable phrase bank.
+### Ranking
+- Exact recurrence (normalized match)
 
-Everything else is intentionally excluded in V1.
-
----
-
-## System Design Principles
-
-- Human-in-the-loop is non-negotiable  
-- AI suggests; the coach decides  
-- Structured memory over raw transcript dependence  
-- Ambient awareness, not dashboard overload  
-
-If the coach must read more than five words, it’s too much.
+### Spatial Mapping
+- Quadrant as structural map  
+- Recurrence drives radial proximity  
+- Inline quadrant override
 
 ---
 
-## Architecture Overview
+## Design Principles
+
+- Human authority preserved  
+- Deterministic over opaque  
+- Structured memory over transcript storage  
+- Ambient awareness over dashboard noise  
+
+---
+
+## Architecture
 
 - **Frontend:** React / Next.js  
-- **Backend:** Python (FastAPI)  
-- **AI Layer:** LLM classification + extraction pipelines  
-- **Storage:** Structured session objects + encrypted transcript layer  
-
-Session data is stored as structured utterances, ranked phrases, and orientation summaries to create a high-integrity dataset for future agentic evolution.
+- **Backend:** FastAPI  
+- **AI Layer:** Extraction + classification pipelines  
+- **Storage:** Structured session objects only  
 
 ---
 
 ## Strategic Intent
 
-Session Canvas is the first architectural layer in the broader Paloma ecosystem, building validated conversational structure for AI-assisted coaching intelligence.
+Foundational conversational mapping layer of the Paloma ecosystem.
