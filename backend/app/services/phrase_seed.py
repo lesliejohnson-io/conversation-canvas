@@ -22,6 +22,7 @@ def seed_phrases_from_sentences(session_id: str) -> dict:
         sentences = db.exec(
             select(Sentence)
             .where(Sentence.session_id == session_id)
+            .where(Sentence.speaker == "Client")
             .order_by(Sentence.sentence_index.asc())
         ).all()
 

@@ -12,10 +12,15 @@ export type Phrase = {
   
   export type QuadrantNode = {
     phrase_id: number;
-    phrase_text: string;
-    quadrant_final: string;
-    recurrence_count: number;
+    number: number | null;
+    label: string;
+    phrase_text: string; // full phrase (for side panel / hover)
+    quadrant: string;    // effective quadrant (final overrides model)
     ring_index: number;
+    dot_radius: number;
+    opacity: number;
+    recurrence_count: number;
+    source_sentence_index: number;
     x: number;
     y: number;
   };
