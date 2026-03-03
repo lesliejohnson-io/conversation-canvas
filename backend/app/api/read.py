@@ -40,20 +40,6 @@ def seed_phrases(session_id: str) -> dict:
     stats = seed_phrases_from_sentences(session_id)
     return {"session_id": session_id, "stats": stats}
 
-_COMMITMENT_ORDER = [
-    "i will",
-    "i'm going to",
-    "i want",
-    "i'd be",
-    "i'd have",
-]
-
-def _commitment_score(text: str) -> int:
-    t = text.strip().lower()
-    for i, prefix in enumerate(_COMMITMENT_ORDER):
-        if t.startswith(prefix):
-            return len(_COMMITMENT_ORDER) - i
-    return 0
 
 @router.get("/sessions/{session_id}/phrases")
 def list_phrases(session_id: str) -> dict:
@@ -67,13 +53,12 @@ def list_phrases(session_id: str) -> dict:
     rows_sorted = sorted(
         rows,
         key=lambda r: (
-            -r.recurrence_count,
-            -_commitment_score(r.phrase_text),
-            -(r.classification_confidence or 0.0),
+            -(r.recurrence_count or 1),
+            -(r.extraction_confidence or 0.0),
             r.id or 0,
         ),
     )
-
+    
     return {
         "session_id": session_id,
         "phrases": [
@@ -136,15 +121,17 @@ def quadrant_map(session_id: str) -> dict:
         rows = db.exec(
             select(Phrase)
             .where(Phrase.session_id == session_id)
-            .where(Phrase.quadrant_final != None)  # noqa: E711
+            .where((Phrase.quadrant_final != None) | (Phrase.quadrant_model != None))  # noqa: E711
             .order_by(Phrase.recurrence_count.desc(), Phrase.id.asc())
         ).all()
 
     # Group: quadrant -> recurrence_count -> list[Phrase]
     grouped = defaultdict(lambda: defaultdict(list))
     for p in rows:
-        grouped[p.quadrant_final][int(p.recurrence_count or 1)].append(p)
-
+        effective_quadrant = p.quadrant_final or p.quadrant_model
+        if not effective_quadrant:
+            continue
+        grouped[effective_quadrant][int(p.recurrence_count or 1)].append(p)
     # Determine ring order per quadrant (highest recurrence closest to center)
     # We'll map each recurrence_count to a ring_index: 0=center-most, increasing outward
     nodes = []
@@ -170,7 +157,7 @@ def quadrant_map(session_id: str) -> dict:
                     {
                         "phrase_id": p.id,
                         "phrase_text": p.phrase_text,
-                        "quadrant_final": p.quadrant_final,
+                        "quadrant_final": effective_quadrant,
                         "recurrence_count": p.recurrence_count,
                         "ring_index": ring_index,
                         "x": round(x, 4),
