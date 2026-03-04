@@ -1,4 +1,4 @@
-# 🕊️ Paloma Session Canvas
+# <img src="/frontend/logo.svg" alt="Conversation Canvas Logo" width="32" align="left"> Conversation Canvas
 
 ## The Structured Conversational Mapping Layer
 
