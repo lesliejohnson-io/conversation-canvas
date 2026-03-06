@@ -26,7 +26,7 @@ Unstructured transcript input → spatially mapped, confidence-gated state.
 - Max two phrases per utterance (cross-quadrant only)
 
 ### Classification
-- DOQ quadrant assignment  
+- Quadrant assignment  
 - Confidence ≥ 0.7  
 - Below threshold → list-only
 
@@ -51,7 +51,7 @@ Unstructured transcript input → spatially mapped, confidence-gated state.
 ## Demo
 
 <img src="/frontend/public/screenshot.png" width="900" align="left"/>
-
+<br/>
 ---
 
 ## Architecture
