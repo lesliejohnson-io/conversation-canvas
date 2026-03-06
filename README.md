@@ -1,4 +1,4 @@
-# <img src="/frontend/logo.svg" alt="Conversation Canvas Logo" width="32" align="left"> Conversation Canvas
+# <img src="/frontend/public/logo.svg" alt="Conversation Canvas Logo" width="32" align="left"> Conversation Canvas
 
 ## The Structured Conversational Mapping Layer
 
@@ -9,7 +9,7 @@ A real-time system for mapping meaningful phrases in dialogue.
 From conversation → structure → insight.
 
 Unstructured transcript input → spatially mapped, confidence-gated state.  
-No automated coaching decisions.
+
 
 ![AI](https://img.shields.io/badge/AI-Human--in--the--Loop-blue)
 ![System](https://img.shields.io/badge/System-Workflow%20Intelligence-blue)
@@ -50,9 +50,8 @@ No automated coaching decisions.
 ---
 ## Demo
 
-<p align="center">
-  <img src="public/screenshot.png" width="900"/>
-</p>
+<img src="/frontend/public/screenshot.png" width="900" align="left"/>
+
 ---
 
 ## Architecture
