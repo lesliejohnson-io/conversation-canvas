@@ -4,7 +4,9 @@
 
 **Before AI can guide human conversation, conversational state must be made legible.**
 
-Real-time conversational state mapping for live coaching sessions.
+A real-time system for mapping meaningful phrases in dialogue.
+
+From conversation → structure → insight.
 
 Unstructured transcript input → spatially mapped, confidence-gated state.  
 No automated coaching decisions.
@@ -45,6 +47,12 @@ No automated coaching decisions.
 - Structured memory over transcript storage  
 - Ambient awareness over dashboard noise  
 
+---
+## Demo
+
+<p align="center">
+  <img src="public/screenshot.png" width="900"/>
+</p>
 ---
 
 ## Architecture
