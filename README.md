@@ -52,6 +52,7 @@ Unstructured transcript input → spatially mapped, confidence-gated state.
 
 <img src="/frontend/public/screenshot.png" width="900" align="left"/>
 <br/>
+
 ---
 
 ## Architecture
